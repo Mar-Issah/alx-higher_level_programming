@@ -1,2 +1,3 @@
-# alx-higher_level_programming
-ALX higher level programming with Python
+##  Higher Level Programming ― Python
+
+0x00-python-hello_world project
