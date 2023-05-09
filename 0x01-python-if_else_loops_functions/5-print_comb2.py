@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-for i in range(100):
-    if i < 99:
-        print(f"{i:02d},", end=' ')
-    elif i == 99:
-        print(f"{i:d}")
+for idx in range(100):
+    if idx < 99:
+        print("{:02d},".format(idx), end=' ')
+    elif idx == 99:
+        print("{:d}".format(idx))
