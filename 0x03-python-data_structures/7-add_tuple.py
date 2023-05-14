@@ -5,5 +5,4 @@ def add_tuple(tuple_a=(), tuple_b=()):
     b_1 = tuple_b[0] if len(tuple_b) > 0 else 0
     b_2 = tuple_b[1] if len(tuple_b) > 1 else 0
 
-    # return (a_1 + b_1, a_2 + b_2)
-    print("{:d}+{:d},{:d}+{:d}".format(a_1, a_2, b_1, b_2))
+    return (a_1 + b_1, a_2 + b_2)
