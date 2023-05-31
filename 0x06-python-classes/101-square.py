@@ -17,6 +17,11 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
         self.__size = size
+        self.__position = position
+
+    def __str__(self):
+        """print the square"""
+        return self.square_print()[:-1]
 
     @property
     def size(self):
@@ -28,11 +33,11 @@ class Square:
         """This setter func returns the size of the square
 
         Raises:
-          TypeError: if size is not an integer
-          ValueError: if size is < 0
+            TypeError: if size is not an integer
+            ValueError: if size is < 0
 
         Args:
-           value: value to set
+            value: value to set
         """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
@@ -71,7 +76,7 @@ class Square:
 
         Returns: The current square area
         """
-        return self.__size**2
+        return self.__size ** 2
 
     def my_print(self):
         """This Method prints the area of square with the char #"""
