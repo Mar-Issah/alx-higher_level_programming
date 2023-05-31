@@ -10,7 +10,7 @@ class MagicClass:
         """Class constructor"""
         self.__radius = 0
         if type(radius) is not int and type(radius) is not float:
-            raise TypeError('must be a number')
+            raise TypeError('radius must be a number')
         self.__radius = radius
 
     def circumference(self):
