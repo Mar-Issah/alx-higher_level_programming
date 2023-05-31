@@ -18,6 +18,9 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = size
 
+    def __str__(self):
+        self.my_print()
+
     @property
     def size(self):
         """This getter func returns the size of the square"""
