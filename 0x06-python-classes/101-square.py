@@ -75,12 +75,12 @@ class Square:
 
     def my_print(self):
         """This Method prints the area of square with the char #"""
-        print(self.char_print(), end="")
+        print(self.square_print(), end="")
 
-    def char_print(self):
+    def square_print(self):
         """Method that returns the position in spaces"""
         result = ""
-        if self.size == 0:
+        if not self.size:
             return "\n"
         for _ in range(self.position[1]):
             result += "\n"
