@@ -1,0 +1,57 @@
+The ``say_my_name`` module
+==========================
+
+using ``say_my_name``
+---------------------
+
+First import ``say_my_name``:
+
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Test: Pass in two strings first_name and last_name:
+
+	>>> say_my_name("Marsiya", "Issah")
+	My name is Marsiya Issah
+
+Test: Pss in just a first_name:
+
+	>>> say_my_name("Marsiya")
+	My name is Marsiya
+
+Test: Number as first name:
+
+	>>> say_my_name(55, "Issah")
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+Test: Pass in empty strings:
+
+	>>> say_my_name("", "")
+	My name is
+
+Test: No argument:
+
+	>>> say_my_name()
+	Traceback (most recent call last):
+	...
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Test: Pass in strings with whitespace:
+
+	>>> say_my_name("  ", "  ")
+	My name is
+
+Test: Pass in last name as number:
+
+	>>> say_my_name("tabitha", 12)
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+Test: Pass in two integers:
+
+	>>> say_my_name(42, 42)
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
