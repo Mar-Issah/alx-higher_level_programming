@@ -6,11 +6,10 @@ class Rectangle:
     """Represents a rectangle"""
 
     count_instances = 0
-    symbol = "#"
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """ "Initializes the rectangle
-
         Args:
             width: width of the rect
             height: height of the rect
@@ -22,7 +21,6 @@ class Rectangle:
     @property
     def width(self):
         """getter method of the width
-
         Returns: the width
         """
         return self.__width
@@ -30,7 +28,6 @@ class Rectangle:
     @width.setter
     def width(self, value):
         """setter method for the width
-
         Args:
             value: width's value
 
@@ -48,7 +45,6 @@ class Rectangle:
     @property
     def height(self):
         """getter method of the height
-
         Returns: the height
         """
         return self.__height
@@ -56,7 +52,6 @@ class Rectangle:
     @height.setter
     def height(self, value):
         """setter method for the height
-
         Args:
             value: height value
 
@@ -94,9 +89,7 @@ class Rectangle:
         return ((str(self.print_symbol) * self.width + "\n") * self.height).strip()
 
     def __repr__(self):
-        """
-        Return the formal representation of the rectangle
-        """
+        """Return the formal representation of the rectangle"""
         return f"Rectangle({self.width}, {self.height})"
 
     def __del__(self):
