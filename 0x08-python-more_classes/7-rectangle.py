@@ -6,6 +6,7 @@ class Rectangle:
     """Represents a rectangle"""
 
     count_instances = 0
+    symbol = "#"
 
     def __init__(self, width=0, height=0):
         """ "Initializes the rectangle
@@ -90,7 +91,7 @@ class Rectangle:
         """
         if self.width == 0 or self.height == 0:
             return ""
-        return (("#" * self.width + "\n") * self.height).strip()
+        return ((str(self.print_symbol) * self.width + "\n") * self.height).strip()
 
     def __repr__(self):
         """
