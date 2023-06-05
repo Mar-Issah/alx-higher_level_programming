@@ -88,3 +88,15 @@ class Rectangle:
         if self.width == 0 or self.height == 0:
             return ""
         return (("#" * self.width + "\n") * self.height).strip()
+
+    def __repr__(self):
+        """
+        Return the formal representation of the rectangle
+        """
+        return f"Rectangle({self.width}, {self.height})"
+
+    def __del__(self):
+        """
+        Detect instance deletion
+        """
+        print("Bye rectangle...")
