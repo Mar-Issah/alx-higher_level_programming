@@ -3,7 +3,7 @@
 
 
 def text_indentation(text):
-    """Function that adds two new lines when it finds these characters in a string: ., :, and ?
+    """Func that adds new lines when it finds these char in string: ., :, ?
 
     Args:
         text: the string to print
@@ -15,7 +15,8 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     for char in ".?:":
-        text = (char + "\n\n").join([line.strip(" ") for line in text.split(char)])
+        nline = char + "\n\n"
+        text = nline.join([line.strip(" ") for line in text.split(char)])
     print(text, end="")
 
 
