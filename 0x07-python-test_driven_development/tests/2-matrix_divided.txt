@@ -74,3 +74,21 @@ Test: Empty innner lists:
 	...
 	TypeError: matrix must be a matrix (list of lists) of integers/floats
 
+Test: Division by infinity:
+
+	>>> matrix_divided([[2, 4, 6], [6, 4, 2]], float('inf'))
+	[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+Test: Missing two argument:
+
+	>>> matrix_divided()
+	Traceback (most recent call last):
+	...
+	TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Test: Missing one argument:
+
+	>>> matrix_divided(None, 1)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
