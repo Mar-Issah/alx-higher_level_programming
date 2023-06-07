@@ -63,3 +63,10 @@ Test: String first argument
     Traceback (most recent call last):
         ...
     TypeError: a must be an integer
+
+Test: Float overlow:
+
+	>>> add_integer(float('inf'), 2)
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
