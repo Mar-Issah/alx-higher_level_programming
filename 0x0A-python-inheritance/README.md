@@ -1,13 +1,14 @@
-## Higher Level Programming - Python
+## General
 
-- 0x00-python-hello_world project
-- 0x01-python-if_else_loops_functions
-- 0x02-python-import_modules
-- 0x03-python-data_structures
-- 0x04-python-more_data_structures
-- 0x05-python-exceptions
-- 0x06-python_classes
-- 0x07-python-test_driven_development
-- 0x08-python-more_classes
-- 0x09-python-everything_is_object
-- 0x0A-python-inheritance
+- Why Python programming is awesome
+- What is a superclass, baseclass or parentclass
+- What is a subclass
+- How to list all attributes and methods of a class or instance
+- When can an instance have new attributes
+- How to inherit class from another
+- How to define a class with multiple base classes
+- What is the default class every class inherit from
+- How to override a method or attribute inherited from the base class
+- Which attributes or methods are available by heritage to subclasses
+- What is the purpose of inheritance
+- What are, when and how to use isinstance, issubclass, type and super built-in functions
