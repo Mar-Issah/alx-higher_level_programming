@@ -3,7 +3,7 @@
 
 
 def inherits_from(obj, a_class):
-    """Func that check if obj is an inst of class that inherited from specified class
+    """Func that check if obj is an inst of class that inherited
     Args:
         obj: the object
         a_class: the given class
