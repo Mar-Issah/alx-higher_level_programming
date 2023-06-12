@@ -65,3 +65,25 @@ Test: Pass in negative numbers in list:
 	>>> test.print_sorted()
 	[-3, -2, -1]
 
+
+Test: Check already sorted:
+
+	>>> test = MyList([1, 5, 7])
+	>>> test.print_sorted()
+	[1, 5, 7]
+
+Test: Check if the list can appended:
+
+	>>> test = MyList([1, 8])
+	>>> test.append(7)
+	>>> test
+	[1, 8, 7]
+
+Test: no changes to the list after print_sorted:
+
+	>>> test = MyList([1, 9, 2])
+	>>> test.print_sorted()
+	[1, 2, 9]
+	>>> test
+	[1, 9, 2]
+
