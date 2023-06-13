@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Write imported module here"""
+"""Write module here"""
 
 
 def read_file(filename=""):
