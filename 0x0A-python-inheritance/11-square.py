@@ -19,3 +19,4 @@ class Square(Rectangle):
         """func to return the square description"""
         return "[Square] " + str(self.__size) + "/" + str(self.__size)
 
+
