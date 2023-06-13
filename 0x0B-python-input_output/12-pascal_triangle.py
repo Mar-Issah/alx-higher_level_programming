@@ -1,13 +1,16 @@
 #!/usr/bin/python3
 """Imported module for add_item"""
 
+
 def pascal_triangle(n):
-    """func that represent the Pascals triangle of n
+    """Func that represents Pascal's triangle of n.
 
     Args:
-		n: number
+        n: Number.
 
-    Return: list of lists of integers"""
+    Return:
+        List of lists of integers.
+    """
     triangle = []
     row = [1]
     temp = [0]

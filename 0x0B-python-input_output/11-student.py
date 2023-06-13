@@ -18,7 +18,6 @@ class Student:
         else:
             return self.__dict__.copy()
 
-
     def reload_from_json(self, json):
         """func that replaces all attributes of the Student instance
 
