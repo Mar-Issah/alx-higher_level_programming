@@ -25,4 +25,4 @@ class Student:
         json: A dic containing attribute names and  values.
         """
         for key, value in json.items():
-          setattr(self, key, value)
+            setattr(self, key, value)
