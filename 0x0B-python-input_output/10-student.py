@@ -11,9 +11,8 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-        """get dict, names if only string"""
-        is_valid = all(isinstance(attr, str) for attr in attrs)
-        if isinstance(attrs, list) and is_valid:
+        """func that get dict, names if only string"""
+        if isinstance(attrs, list) and all(isinstance(a, str) for a in attrs):
             return {key: value for key, value in self.__dict__.items()
                     if key in attrs}
         else:
