@@ -125,7 +125,7 @@ Test: Pass in 0:
 
 Test: Pass in a dictionary:
 
-	>>> test.integer_validator("di", {11, 5})
+	>>> test.integer_validator("dic", {11, 5})
 	Traceback (most recent call last):
 	...
 	TypeError: dic must be an integer
