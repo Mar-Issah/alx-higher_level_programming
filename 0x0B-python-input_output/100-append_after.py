@@ -14,9 +14,13 @@ def append_after(filename="", search_string="", new_string=""):
     with open(filename, "r", encoding="utf-8") as file:
         lines = file.readlines()
 
-    for idx in range(len(lines)):
-        if search_string in lines[idx]:
-            lines.insert(idx + 1, new_string)
+    last_occurrence_index = None
+    for idx, line in enumerate(lines):
+        if search_string in line:
+            last_occurrence_index = idx
+
+    if last_occurrence_index is not None:
+        lines.insert(last_occurrence_index + 1, new_string)
 
     with open(filename, "w", encoding="utf-8") as file:
         file.writelines(lines)
