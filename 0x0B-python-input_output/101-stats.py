@@ -27,3 +27,11 @@ except KeyboardInterrupt:
     print("File_size:", file_size)
     for code in sorted(status_counts.keys()):
         print(f"{code}: {status_counts[code]}")
+    print()
+
+
+if count < 10:
+    print("File_size:", file_size)
+    for code in sorted(status_counts.keys()):
+        print(f"{code}: {status_counts[code]}")
+    print()
