@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Imported modules for the Base class"""
 
 class Base:
     """The Base class"""
