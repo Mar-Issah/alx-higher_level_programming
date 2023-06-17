@@ -89,8 +89,28 @@ class Rectangle(Base):
         type(self).__name__, self.id, self.x, self.y, self.width, self.height
     )
 
+    def update(self, *args, **kwargs):
+        """Update instance attributes using positional and keyword arguments.
+
+        Args:
+        *args: Positional arguments containing attribute values to update
+        **kwargs: Keyword arguments containing attribute values to update
+        """
+        if args:
+            self.__update(*args)
+        elif kwargs:
+            self.__update(**kwargs)
+
     def __update(self, id=None, width=None, height=None, x=None, y=None):
-        '''update instance attributes via */**args'''
+        """Helper method to update instance attributes using specific keyword arguments.
+
+        Args:
+        id (int): New value for the id attribute
+        width (int): New value for the width attribute
+        height (int): New value for the height attribute
+        x (int): New value for the x attribute
+        y (int): New value for the y attribute
+        """
         if id is not None:
             self.id = id
         if width is not None:
@@ -102,12 +122,6 @@ class Rectangle(Base):
         if y is not None:
             self.y = y
 
-    def update(self, *args, **kwargs):
-        '''update instance attributes via */** args'''
-        if args:
-            self.__update(*args)
-        elif kwargs:
-            self.__update(**kwargs)
 
     def to_dictionary(self):
         '''dictionary rep of a class'''
