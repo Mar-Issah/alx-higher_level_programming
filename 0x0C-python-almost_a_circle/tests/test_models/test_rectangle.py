@@ -110,5 +110,15 @@ class TestRectangle(unittest.TestCase):
         expected_output = "[Rectangle] (10) 2/1 - 5/3"
         self.assertEqual(str(rect), expected_output)
 
+    def test_update(self):
+        """Test the update method"""
+        rect = Rectangle(5, 3, 2, 1, 10)
+        rect.update(7, height=4, x=3)
+        self.assertEqual(rect.id, 7)
+        self.assertEqual(rect.width, 5)  # width not updated
+        self.assertEqual(rect.height, 4)
+        self.assertEqual(rect.x, 3)
+        self.assertEqual(rect.y, 1)
+
 if __name__ == '__main__':
     unittest.main()
