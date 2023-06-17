@@ -3,6 +3,8 @@
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
+from io import StringIO
+from unittest.mock import patch
 
 class TestRectangle(unittest.TestCase):
     def setUp(self):
@@ -87,6 +89,19 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(ValueError, rect.validate_attribute, "height", 0, False)
         self.assertRaises(ValueError, rect.validate_attribute, "x", "invalid", False)
         self.assertRaises(ValueError, rect.validate_attribute, "y", "invalid", False)
+
+    def test_area(self):
+        """Test the area method"""
+        rect = Rectangle(5, 3, 2, 1)
+        self.assertEqual(rect.area(), 15)
+
+    def test_display(self):
+        """Test the display method"""
+        rect = Rectangle(5, 3, 2, 1)
+        expected_output = "\n\n  #####\n  #####\n  #####\n"
+        with patch("sys.stdout", new=StringIO()) as fake_out:
+            rect.display()
+            self.assertEqual(fake_out.getvalue(), expected_output)
 
 if __name__ == '__main__':
     unittest.main()
