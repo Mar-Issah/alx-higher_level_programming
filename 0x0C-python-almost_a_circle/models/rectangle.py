@@ -22,7 +22,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """Setter for width of rectangle"""
-        self.validate_integer("width", value, False)
+        self.validate_attribute("width", value, False)
         self.__width = value
 
     @property
@@ -33,7 +33,7 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """Setter for height of rectangle"""
-        self.validate_integer("height", value, False)
+        self.validate_attribute("height", value, False)
         self.__height = value
 
     @property
@@ -44,7 +44,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """Setter for x"""
-        self.validate_integer("x", value)
+        self.validate_attribute("x", value)
         self.__x = value
 
     @property
@@ -55,17 +55,23 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """Setter for y"""
-        self.validate_integer("y", value)
+        self.validate_attribute("y", value)
         self.__y = value
 
-    def validate_integer(self, name, value, eq=True):
-        '''check the value as int and >= 0'''
+    def validate_attribute(self, name, value, inclusive=True):
+        """Function to validate the attribute
+
+        Args:
+            name: Name of the attribute to be validated
+            value: The attribute value
+            inclusive: Boolean flag indicating whether the validation is inclusive
+        """
         if type(value) != int:
-            raise TypeError("{} must be an integer".format(name))
-        if eq and value < 0:
-            raise ValueError("{} must be >= 0".format(name))
-        elif not eq and value <= 0:
-            raise ValueError("{} must be > 0".format(name))
+            raise TypeError(f"{name} must be an integer")
+        if inclusive and value < 0:
+            raise ValueError(f"{name} must be >= 0")
+        elif not inclusive and value <= 0:
+            raise ValueError(f"{name} must be > 0")
 
     def area(self):
         '''find area of a rectangle'''
