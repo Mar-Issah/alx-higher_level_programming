@@ -103,5 +103,12 @@ class TestRectangle(unittest.TestCase):
             rect.display()
             self.assertEqual(fake_out.getvalue(), expected_output)
 
+
+    def test_str(self):
+        """Test the __str__ method"""
+        rect = Rectangle(5, 3, 2, 1, 10)
+        expected_output = "[Rectangle] (10) 2/1 - 5/3"
+        self.assertEqual(str(rect), expected_output)
+
 if __name__ == '__main__':
     unittest.main()
