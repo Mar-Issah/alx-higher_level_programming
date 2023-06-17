@@ -70,5 +70,23 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             obj = Rectangle(5, 3, 2, "invalid")
 
+    def test_validate_attribute_inclusive(self):
+        """Test validate_attribute method with inclusive flag set to True"""
+        rect = Rectangle(5, 3, 2, 1)
+        self.assertRaises(TypeError, rect.validate_attribute, "width", "invalid")
+        self.assertRaises(ValueError, rect.validate_attribute, "width", -5)
+        self.assertRaises(ValueError, rect.validate_attribute, "height", -3)
+        self.assertRaises(ValueError, rect.validate_attribute, "x", "invalid")
+        self.assertRaises(ValueError, rect.validate_attribute, "y", "invalid")
+
+    def test_validate_attribute_exclusive(self):
+        """Test validate_attribute method with inclusive flag set to False"""
+        rect = Rectangle(5, 3, 2, 1)
+        self.assertRaises(TypeError, rect.validate_attribute, "width", "invalid", False)
+        self.assertRaises(ValueError, rect.validate_attribute, "width", 0, False)
+        self.assertRaises(ValueError, rect.validate_attribute, "height", 0, False)
+        self.assertRaises(ValueError, rect.validate_attribute, "x", "invalid", False)
+        self.assertRaises(ValueError, rect.validate_attribute, "y", "invalid", False)
+
 if __name__ == '__main__':
     unittest.main()
