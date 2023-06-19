@@ -38,5 +38,36 @@ class TestBase(unittest.TestCase):
         self.assertEqual(getattr(Base, "_Base__nb_objects"), 1)
         self.assertEqual(base_instance._Base__nb_objects, 1)
 
+    def test_to_json_string(self):
+        """Test for to_json_string method with empty list"""
+        self.assertEqual(Base.to_json_string([]), "[]")
+
+        """Test with list of dictionaries"""
+        data = [
+            {"id": 1, "name": "Marsiya"},
+            {"id": 2, "name": "Issah"}
+        ]
+        expected_output = '[{"id": 1, "name": "Marsiya"}, {"id": 2, "name": "Issah"}]'
+        self.assertEqual(Base.to_json_string(data), expected_output)
+
+        """ Test with None"""
+        self.assertEqual(Base.to_json_string(None), "[]")
+
+    def test_from_json_string(self):
+        """Test for from_json_string method with empty string"""
+        self.assertEqual(Base.from_json_string(""), [])
+
+        """Test with JSON string"""
+        json_string = '[{"id": 1, "name": "Marsiya"}, {"id": 2, "name": "Issah"}]'
+        expected_output = [
+            {"id": 1, "name": "Marsiya"},
+            {"id": 2, "name": "Issah"}
+        ]
+        self.assertEqual(Base.from_json_string(json_string), expected_output)
+
+        """ Test with None"""
+        self.assertEqual(Base.from_json_string(None), [])
+
+
 if __name__ == '__main__':
     unittest.main()
