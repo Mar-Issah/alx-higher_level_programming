@@ -124,6 +124,6 @@ class Rectangle(Base):
             self.y = y
 
     def to_dictionary(self):
-        '''dictionary rep of a class'''
+        """returns dictionary rep of a Rectangle"""
         return {"id": self.id, "width": self.__width, "height": self.__height,
                 "x": self.__x, "y": self.__y}
