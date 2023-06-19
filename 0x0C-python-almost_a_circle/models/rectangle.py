@@ -64,7 +64,7 @@ class Rectangle(Base):
         Args:
             name: Name of the attribute to be validated
             value: The attribute value
-            inclusive: Boolean flag indicating whether the validation is inclusive
+            inclusive: Bool flag indicating whether the val is inclusive
         """
         if type(value) != int:
             raise TypeError(f"{name} must be an integer")
@@ -84,10 +84,11 @@ class Rectangle(Base):
         print(rep, end='')
 
     def __str__(self):
-        """Returns string format of  rectangle"""
+        """Returns string format of rectangle"""
         return '[{}] ({}) {}/{} - {}/{}'.format(
-        type(self).__name__, self.id, self.x, self.y, self.width, self.height
-    )
+            type(self).__name__, self.id, self.x, self.y,
+            self.width, self.height
+        )
 
     def update(self, *args, **kwargs):
         """Update instance attributes using positional and keyword arguments.
@@ -102,7 +103,7 @@ class Rectangle(Base):
             self.__update(**kwargs)
 
     def __update(self, id=None, width=None, height=None, x=None, y=None):
-        """Helper method to update instance attributes using specific keyword arguments.
+        """Helper method to update instance attr using specific key arg
 
         Args:
         id (int): New value for the id attribute
@@ -121,7 +122,6 @@ class Rectangle(Base):
             self.x = x
         if y is not None:
             self.y = y
-
 
     def to_dictionary(self):
         '''dictionary rep of a class'''
