@@ -27,7 +27,7 @@ class Square(Rectangle):
         self.height = value
 
     def __update(self, id=None, size=None, x=None, y=None):
-        """Helper method to update instance attributes using specific keyword arguments.
+        """Helper method to update instance attr using specific keyword args
 
         Args:
         id (int): New value for the id attribute
