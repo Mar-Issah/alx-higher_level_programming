@@ -4,6 +4,7 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 import os
+from models.square import Square
 
 class TestBase(unittest.TestCase):
     """Class to write test cases for the base class"""
@@ -124,6 +125,33 @@ class TestBase(unittest.TestCase):
             self.assertEqual(orig_rect.id, saved_rect_dict["id"])
 
         os.remove(filename)
+
+    def test_create_rectangle(self):
+        """ Create a dictionary with values for a Rectangle"""
+        rect_dict = {"id": 1, "width": 5, "height": 3, "x": 2, "y": 1}
+
+
+        rect = Rectangle.create(**rect_dict)
+        self.assertIsInstance(rect, Rectangle)
+
+        self.assertEqual(rect.id, 1)
+        self.assertEqual(rect.width, 5)
+        self.assertEqual(rect.height, 3)
+        self.assertEqual(rect.x, 2)
+        self.assertEqual(rect.y, 1)
+
+    def test_create_square(self):
+        """ Create a dictionary with values for a Square"""
+        square_dict = {"id": 20, "size": 4, "x": 9, "y": 22}
+
+        square = Square.create(**square_dict)
+
+        self.assertIsInstance(square, Square)
+
+        self.assertEqual(square.id, 20)
+        self.assertEqual(square.size, 4)
+        self.assertEqual(square.x, 9)
+        self.assertEqual(square.y, 22)
 
 
 if __name__ == '__main__':

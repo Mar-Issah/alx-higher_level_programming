@@ -2,6 +2,8 @@
 """Imported modules for the Base class"""
 from json import dumps
 from json import loads
+from models.rectangle import Rectangle
+from models.square import Square
 
 
 class Base:
@@ -43,3 +45,17 @@ class Base:
         if json_string is None or not json_string:
             return []
         return loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Loads an instance"""
+
+        if cls is Rectangle:
+            new_instance = Rectangle(1, 1)
+        elif cls is Square:
+            new_instance = Square(1)
+        else:
+            new_instance = None
+
+        new_instance.update(**dictionary)
+        return new_instance
