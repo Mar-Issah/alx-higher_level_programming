@@ -2,6 +2,8 @@
 """Imported modules for the Base test class"""
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
+import os
 
 class TestBase(unittest.TestCase):
     """Class to write test cases for the base class"""
@@ -67,6 +69,61 @@ class TestBase(unittest.TestCase):
 
         """ Test with None"""
         self.assertEqual(Base.from_json_string(None), [])
+
+    def test_save_to_file(self):
+        """ Create a list of Rectangle objects"""
+        rectangles = [
+            Rectangle(4, 6, 2, 3),
+            Rectangle(5, 3, 1, 2)
+        ]
+
+        Rectangle.save_to_file(rectangles)
+
+        filename = Rectangle.__name__ + ".json"
+        with open(filename, "r") as file:
+            content = file.read()
+
+        self.assertTrue(content.startswith("["))
+        self.assertTrue(content.endswith("]"))
+
+        json_data = Rectangle.from_json_string(content)
+
+        self.assertEqual(len(rectangles), len(json_data))
+
+        for orig_rect, saved_rect_dict in zip(rectangles, json_data):
+            self.assertEqual(orig_rect.to_dictionary(), saved_rect_dict)
+
+        os.remove(filename)
+
+        rectangles = [
+                Rectangle(4, 6, 2, 3),
+                Rectangle(5, 3, 1, 2)
+            ]
+
+        """Save and read the rectangles to a file"""
+        Rectangle.save_to_file(rectangles)
+
+        filename = Rectangle.__name__ + ".json"
+        with open(filename, "r") as file:
+            content = file.read()
+
+
+        self.assertTrue(content.startswith("["))
+        self.assertTrue(content.endswith("]"))
+
+
+        json_data = Rectangle.from_json_string(content)
+
+        self.assertEqual(len(rectangles), len(json_data))
+
+        for orig_rect, saved_rect_dict in zip(rectangles, json_data):
+            self.assertEqual(orig_rect.width, saved_rect_dict["width"])
+            self.assertEqual(orig_rect.height, saved_rect_dict["height"])
+            self.assertEqual(orig_rect.x, saved_rect_dict["x"])
+            self.assertEqual(orig_rect.y, saved_rect_dict["y"])
+            self.assertEqual(orig_rect.id, saved_rect_dict["id"])
+
+        os.remove(filename)
 
 
 if __name__ == '__main__':
