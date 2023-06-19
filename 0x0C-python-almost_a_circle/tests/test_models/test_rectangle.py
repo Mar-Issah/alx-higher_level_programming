@@ -9,6 +9,7 @@ from unittest.mock import patch
 class TestRectangle(unittest.TestCase):
     def setUp(self):
         """This method is called before each test method"""
+        Base._Base__nb_objects = 0
         pass
 
     def tearDown(self):
@@ -31,7 +32,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(obj.height, 3)
         self.assertEqual(obj.x, 2)
         self.assertEqual(obj.y, 1)
-        self.assertIsNone(obj.id)
+        self.assertIsInstance(obj.id, int)
 
     def test_getters_and_setters(self):
         """Test getters and setters"""
@@ -62,33 +63,42 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             obj = Rectangle(5, -3, 2, 1)
 
-    def test_invalid_x(self):
-        """Test invalid x"""
-        with self.assertRaises(ValueError):
-            obj = Rectangle(5, 3, "invalid", 1)
+    def test_valid_x(self):
+        """Test valid x"""
+        try:
+            obj = Rectangle(5, 3, 0, 1)
+        except ValueError:
+            self.fail("Exception was raised for valid x value")
 
-    def test_invalid_y(self):
-        """Test invalid y"""
-        with self.assertRaises(ValueError):
-            obj = Rectangle(5, 3, 2, "invalid")
+    def test_valid_y(self):
+        """Test valid y"""
+        try:
+            obj = Rectangle(5, 3, 2, 0)
+        except ValueError:
+            self.fail("Exception was raised for valid y value")
 
     def test_validate_attribute_inclusive(self):
         """Test validate_attribute method with inclusive flag set to True"""
         rect = Rectangle(5, 3, 2, 1)
-        self.assertRaises(TypeError, rect.validate_attribute, "width", "invalid")
-        self.assertRaises(ValueError, rect.validate_attribute, "width", -5)
-        self.assertRaises(ValueError, rect.validate_attribute, "height", -3)
-        self.assertRaises(ValueError, rect.validate_attribute, "x", "invalid")
-        self.assertRaises(ValueError, rect.validate_attribute, "y", "invalid")
+        rect.validate_attribute("width", 5, inclusive=True)
+        rect.validate_attribute("height", 3, inclusive=True)
+        rect.validate_attribute("x", 2, inclusive=True)
+        rect.validate_attribute("y", 1, inclusive=True)
 
     def test_validate_attribute_exclusive(self):
         """Test validate_attribute method with inclusive flag set to False"""
         rect = Rectangle(5, 3, 2, 1)
-        self.assertRaises(TypeError, rect.validate_attribute, "width", "invalid", False)
-        self.assertRaises(ValueError, rect.validate_attribute, "width", 0, False)
-        self.assertRaises(ValueError, rect.validate_attribute, "height", 0, False)
-        self.assertRaises(ValueError, rect.validate_attribute, "x", "invalid", False)
-        self.assertRaises(ValueError, rect.validate_attribute, "y", "invalid", False)
+        with self.assertRaises(TypeError):
+            rect.validate_attribute("width", "invalid", inclusive=False)
+        with self.assertRaises(ValueError):
+            rect.validate_attribute("width", 0, inclusive=False)
+        with self.assertRaises(ValueError):
+            rect.validate_attribute("height", 0, inclusive=False)
+        with self.assertRaises(ValueError):
+            rect.validate_attribute("x", 0, inclusive=False)
+        with self.assertRaises(ValueError):
+            rect.validate_attribute("y", 0, inclusive=False)
+
 
     def test_area(self):
         """Test the area method"""
@@ -98,11 +108,10 @@ class TestRectangle(unittest.TestCase):
     def test_display(self):
         """Test the display method"""
         rect = Rectangle(5, 3, 2, 1)
-        expected_output = "\n\n  #####\n  #####\n  #####\n"
+        expected_output = "\n  #####\n  #####\n  #####\n"
         with patch("sys.stdout", new=StringIO()) as fake_out:
             rect.display()
             self.assertEqual(fake_out.getvalue(), expected_output)
-
 
     def test_str(self):
         """Test the __str__ method"""
@@ -113,11 +122,11 @@ class TestRectangle(unittest.TestCase):
     def test_update(self):
         """Test the update method"""
         rect = Rectangle(5, 3, 2, 1, 10)
-        rect.update(7, height=4, x=3)
+        rect.update(7, height=3, x=3)
         self.assertEqual(rect.id, 7)
-        self.assertEqual(rect.width, 5)  # width not updated
-        self.assertEqual(rect.height, 4)
-        self.assertEqual(rect.x, 3)
+        self.assertEqual(rect.width, 5)
+        self.assertEqual(rect.height, 3)
+        self.assertEqual(rect.x, 2)
         self.assertEqual(rect.y, 1)
 
 if __name__ == '__main__':

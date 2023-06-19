@@ -8,6 +8,7 @@ class TestBase(unittest.TestCase):
 
     def setUp(self):
         """Method called before each test method"""
+        Base._Base__nb_objects = 0
         pass
 
     def tearDown(self):
@@ -34,7 +35,8 @@ class TestBase(unittest.TestCase):
     def test_private_class_variable_initial_value(self):
         """Test if __nb_objects has an initial value of 0"""
         base_instance = Base()
-        self.assertEqual(getattr(Base, "_Base__nb_objects", 0))
+        self.assertEqual(getattr(Base, "_Base__nb_objects"), 1)
+        self.assertEqual(base_instance._Base__nb_objects, 1)
 
 if __name__ == '__main__':
     unittest.main()
