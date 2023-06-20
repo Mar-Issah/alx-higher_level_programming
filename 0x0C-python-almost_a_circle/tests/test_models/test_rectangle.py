@@ -34,6 +34,66 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(obj.y, 1)
         self.assertIsInstance(obj.id, int)
 
+    def test_instantiations(self):
+        """Test other instances"""
+        rect = Rectangle(10, 20)
+        self.assertEqual(str(type(rect)), "<class 'models.rectangle.Rectangle'>")
+        self.assertTrue(isinstance(rect, Base))
+        d = {'_Rectangle__height': 20, '_Rectangle__width': 10,
+             '_Rectangle__x': 0, '_Rectangle__y': 0, 'id': 1}
+        self.assertDictEqual(rect.__dict__, d)
+
+        with self.assertRaises(TypeError) as e:
+            rect = Rectangle("1", 2)
+        message = "width must be an integer"
+        self.assertEqual(str(e.exception), message)
+
+        with self.assertRaises(TypeError) as e:
+            rect = Rectangle(1, "2")
+        message = "height must be an integer"
+        self.assertEqual(str(e.exception), message)
+
+        with self.assertRaises(TypeError) as e:
+            rect = Rectangle(1, 2, "3")
+        message = "x must be an integer"
+        self.assertEqual(str(e.exception), message)
+
+        with self.assertRaises(TypeError) as e:
+            rect = Rectangle(1, 2, 3, "4")
+        message = "y must be an integer"
+        self.assertEqual(str(e.exception), message)
+
+        with self.assertRaises(ValueError) as e:
+            rect = Rectangle(-1, 2)
+        message = "width must be > 0"
+        self.assertEqual(str(e.exception), message)
+
+        with self.assertRaises(ValueError) as e:
+            rect = Rectangle(1, -2)
+        message = "height must be > 0"
+        self.assertEqual(str(e.exception), message)
+
+        with self.assertRaises(ValueError) as e:
+            rect = Rectangle(0, 2)
+        message = "width must be > 0"
+        self.assertEqual(str(e.exception), message)
+
+        with self.assertRaises(ValueError) as e:
+            rect = Rectangle(1, 0)
+        message = "height must be > 0"
+        self.assertEqual(str(e.exception), message)
+
+        with self.assertRaises(ValueError) as e:
+            rect = Rectangle(1, 2, -3)
+        message = "x must be >= 0"
+        self.assertEqual(str(e.exception), message)
+
+        with self.assertRaises(ValueError) as e:
+            rect = Rectangle(1, 2, 3, -4)
+        message = "y must be >= 0"
+        self.assertEqual(str(e.exception), message)
+
+
     def test_getters_and_setters(self):
         """Test getters and setters"""
         obj = Rectangle(5, 3, 2, 1)
