@@ -76,3 +76,4 @@ class Base:
 
         obj_dicts = cls.from_json_string(json_data)
         return [cls.create(**obj_dict) for obj_dict in obj_dicts]
+        
