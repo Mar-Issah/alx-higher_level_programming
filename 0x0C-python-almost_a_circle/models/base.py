@@ -2,8 +2,6 @@
 """Imported modules for the Base class"""
 from json import dumps
 from json import loads
-from models.rectangle import Rectangle
-from models.square import Square
 
 
 class Base:
@@ -49,6 +47,8 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """Loads an instance"""
+        from models.rectangle import Rectangle
+        from models.square import Square
 
         if cls is Rectangle:
             new_instance = Rectangle(1, 1)
@@ -59,3 +59,20 @@ class Base:
 
         new_instance.update(**dictionary)
         return new_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """A method that returns a list of instances"""
+
+        from os import path
+
+        file_name = "{}.json".format(cls.__name__)
+
+        if not path.isfile(file_name):
+            return []
+
+        with open(file_name, "r", encoding="utf-8") as file:
+            json_data = file.read()
+
+        obj_dicts = cls.from_json_string(json_data)
+        return [cls.create(**obj_dict) for obj_dict in obj_dicts]

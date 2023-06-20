@@ -153,6 +153,44 @@ class TestBase(unittest.TestCase):
         self.assertEqual(square.x, 9)
         self.assertEqual(square.y, 22)
 
+    def test_load_from_file_rectangle(self):
+        """Test load_from_file method from rect"""
+        rectangles = [Rectangle(2, 3), Rectangle(4, 5)]
+        Rectangle.save_to_file(rectangles)
+
+        loaded_rectangles = Rectangle.load_from_file()
+
+        self.assertEqual(len(loaded_rectangles), 2)
+        self.assertIsInstance(loaded_rectangles[0], Rectangle)
+        self.assertIsInstance(loaded_rectangles[1], Rectangle)
+        self.assertEqual(loaded_rectangles[0].width, 2)
+        self.assertEqual(loaded_rectangles[0].height, 3)
+        self.assertEqual(loaded_rectangles[1].width, 4)
+        self.assertEqual(loaded_rectangles[1].height, 5)
+
+    def test_load_from_file_square(self):
+        """Test load_from_file method from square"""
+        squares = [Square(2), Square(4)]
+        Square.save_to_file(squares)
+
+        loaded_squares = Square.load_from_file()
+
+        self.assertEqual(len(loaded_squares), 2)
+        self.assertIsInstance(loaded_squares[0], Square)
+        self.assertIsInstance(loaded_squares[1], Square)
+        self.assertEqual(loaded_squares[0].size, 2)
+        self.assertEqual(loaded_squares[1].size, 4)
+
+    def test_load_from_file_empty(self):
+        """"Test load_from_file method from empty file"""
+        file_name = "{}.json".format(Rectangle.__name__)
+        with open(file_name, "w") as f:
+            f.write("[]")
+
+        loaded_objects = Rectangle.load_from_file()
+
+        self.assertEqual(len(loaded_objects), 0)
+
 
 if __name__ == '__main__':
     unittest.main()
