@@ -192,5 +192,66 @@ class TestBase(unittest.TestCase):
         self.assertEqual(len(loaded_objects), 0)
 
 
+    def test_save_to_file_csv_rectangle(self):
+        """Test method  Create some Rectangle objects"""
+        r1 = Rectangle(5, 3, 2, 1)
+        r2 = Rectangle(7, 4, 3, 2)
+        r3 = Rectangle(2, 2, 1, 1)
+        rectangles = [r1, r2, r3]
+
+        Rectangle.save_to_file_csv(rectangles)
+
+        with open('Rectangle.csv', 'r', encoding='utf-8') as file:
+            lines = file.readlines()
+
+        expected_lines = ['1,5,3,2,1\n', '2,7,4,3,2\n', '3,2,2,1,1\n']
+        self.assertEqual(lines, expected_lines)
+
+    def test_save_to_file_csv_square(self):
+        """Test Create some Square objects"""
+        s1 = Square(5, 2, 3)
+        s2 = Square(7, 1, 1)
+        s3 = Square(3, 0, 0)
+        squares = [s1, s2, s3]
+
+        Square.save_to_file_csv(squares)
+
+        with open('Square.csv', 'r', encoding='utf-8') as file:
+            lines = file.readlines()
+
+        expected_lines = ['1,5,2,3\n', '2,7,1,1\n', '3,3,0,0\n']
+        self.assertEqual(lines, expected_lines)
+
+    def test_load_from_file_csv_rectangle(self):
+        """Test Load Rectangle objects from CSV file"""
+        rectangles = Rectangle.load_from_file_csv()
+
+        self.assertEqual(len(rectangles), 3)
+
+        self.assertEqual(rectangles[0].width, 5)
+        self.assertEqual(rectangles[0].height, 3)
+        self.assertEqual(rectangles[0].x, 2)
+        self.assertEqual(rectangles[0].y, 1)
+
+        self.assertEqual(rectangles[1].width, 7)
+        self.assertEqual(rectangles[1].height, 4)
+        self.assertEqual(rectangles[1].x, 3)
+        self.assertEqual(rectangles[1].y, 2)
+
+        self.assertEqual(rectangles[2].width, 2)
+        self.assertEqual(rectangles[2].height, 2)
+        self.assertEqual(rectangles[2].x, 1)
+        self.assertEqual(rectangles[2].y, 1)
+
+    def test_load_from_file_csv_square(self):
+        """Test Load Square objects from CSV file"""
+        squares = Square.load_from_file_csv()
+
+        self.assertEqual(len(squares), 3)
+
+        self.assertEqual(squares[0].size, 5)
+        self.assertEqual(squares[0].x, 2)
+
+
 if __name__ == '__main__':
     unittest.main()
