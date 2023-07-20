@@ -1,4 +1,4 @@
--- script that lists all shows, and all genres linked to that show, from the database hbtn_0d_tvshows.
+-- script that lists all shows, and all genres linked to that show, from the database hbtn_0d_tvshows
 -- cat 16-shows_by_genre.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
 SELECT tv_shows.title, tv_genres.name
 FROM tv_shows
