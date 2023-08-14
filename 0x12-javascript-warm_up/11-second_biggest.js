@@ -1,5 +1,6 @@
 #!/usr/bin/node
-const args = process.argv.slice(2);
-const sortedArgs = uniqueArgs.sort((a, b) => b - a);
-
-console.log(sortedArgs.length <= 1 ? sortedArgs[1] : console.log(0));
+if (process.argv.length < 4) {
+  console.log(0);
+} else {
+  console.log(process.argv.slice(2).sort((a, b) => b - a)[1]);
+}
