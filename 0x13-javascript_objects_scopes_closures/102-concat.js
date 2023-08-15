@@ -1,19 +1,19 @@
-#!/usr/bin/node
+// #!/usr/bin/node
 const fs = require('fs');
 
-const fileA = process.argv[2];
-const fileB = process.argv[3];
-const destinationFile = process.argv[4];
+async function concatFiles() {
+  try {
+    const content1 = await fs.promises.readFile(process.argv[2], 'utf-8');
+    const content2 = await fs.promises.readFile(process.argv[3], 'utf-8');
 
-try {
-  const content1 = fs.readFileSync(fileA, 'utf-8');
-  const content2 = fs.readFileSync(fileB, 'utf-8');
+    const concatContent = content1 + '\n' + content2;
 
-  const concatContent = content1 + content2;
+    await fs.promises.writeFile(process.argv[4], concatContent);
 
-  fs.writeFileSync(destinationFile, concatContent);
-
-  console.log(concatContent);
-} catch (error) {
-  console.error('An error occurred:', error.message);
+    console.log(concatContent);
+  } catch (error) {
+    console.error('An error occurred:', error.message);
+  }
 }
+
+concatFiles();
