@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// Rectangle class
+// Represents the Rectangle class
 class Rectangle {
   constructor(w, h) {
     if ((w = parseInt(w)) > 0 && (h = parseInt(h)) > 0) {
@@ -9,9 +9,10 @@ class Rectangle {
   }
 
   print() {
-    for (let i = 0; i < this.height; i++) {
+    for (let idx = 0; idx < this.height; idx++) {
       console.log('X'.repeat(this.width));
     }
   }
 }
+
 module.exports = Rectangle;
