@@ -3,7 +3,7 @@ const Parent = require('./5-square');
 
 // Represents the Square class, inherits from Rectangle
 class Square extends Parent {
-  charPrint(c) {
+  charPrint (c) {
     if (c === undefined) {
       c = 'X';
     }
