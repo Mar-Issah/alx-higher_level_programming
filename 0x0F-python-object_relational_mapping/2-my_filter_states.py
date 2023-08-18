@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""script that lists all states with a name starting with N (upper N) from the database hbtn_0e_0_usa"""
+"""script that lists all states with a name starting with N (upper N)"""
 
 import MySQLdb
 from sys import argv
@@ -7,10 +7,12 @@ from sys import argv
 if __name__ == "__main__":
     db = MySQLdb.connect(
         host="localhost",
-        port=3306, charset="utf8",
+        port=3306,
+        charset="utf8",
         user=argv[1],
         passwd=argv[2],
-        db=argv[3])
+        db=argv[3]
+    )
     cursor = db.cursor()
     query = """ SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY
         states.id ASC""".format(argv[4])
