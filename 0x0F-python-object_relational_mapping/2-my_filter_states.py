@@ -19,6 +19,6 @@ if __name__ == "__main__":
     cursor.execute(query)
     states = cursor.fetchall()
     for state in states:
-            print(state)
+        print(state)
     cursor.close()
     db.close()
