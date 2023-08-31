@@ -1,21 +1,19 @@
-## Higher Level Programming - Python
+## General
 
-- 0x00-python-hello_world project
-- 0x01-python-if_else_loops_functions
-- 0x02-python-import_modules
-- 0x03-python-data_structures
-- 0x04-python-more_data_structures
-- 0x05-python-exceptions
-- 0x06-python_classes
-- 0x07-python-test_driven_development
-- 0x08-python-more_classes
-- 0x09-python-everything_is_object
-- 0x0A-python-inheritance
-- 0x0B-python-input_output
-- 0x0C-python-almost_a_circle
-- 0x0D-SQL_introduction
-- 0x0E-SQL_more_queries
-- 0x12-javascript-warm_up
-- 0x13-javascript_objects_scopes_closures
-- 0x0F-python-object_relational_mapping
-- 0x10-python-network_0
+- What a URL is
+- What HTTP is
+- How to read a URL
+- The scheme for a HTTP URL
+- What a domain name is
+- What a sub-domain is
+- How to define a port number in a URL
+- What a query string is
+- What an HTTP request is
+- What an HTTP response is
+- What HTTP headers are
+- What the HTTP message body is
+- What an HTTP request method is
+- What an HTTP response status code is
+- What an HTTP Cookie is
+- How to make a request with cURL
+- What happens when you type google.com in your browser (Application level)
