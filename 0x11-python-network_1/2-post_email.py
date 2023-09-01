@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" script that takes in a URL and an email and displays the body of the response (decoded in utf-8) """
+""" script that takes in a URL and an email and displays the body """
 import urllib.parse as parse
 import urllib.request as request
 import sys
