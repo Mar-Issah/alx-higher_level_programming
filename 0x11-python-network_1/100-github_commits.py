@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-""" The Holberton School staff evaluates candidates applying for a back-end
-position with multiple technical challenges, like this one: """
+""" script that takes 2 arguments in order to solve the challenge: """
 import requests
 from sys import argv
 
 if __name__ == "__main__":
-    url = "https://api.github.com/repos/{}/{}/commits"\
-          .format(argv[2], argv[1])
-    r = requests.get(url)
-    n = 0
-    for i in r.json():
-        if n < 10:
-            print("{}: {}".format(i.get("sha"),
-                  i.get("commit").get("author").get("name")))
-        n += 1
+    count = 0
+    url = (f"https://api.github.com/repos/{argv[2]}/{argv[1]}/commits")
+    res = requests.get(url)
+
+    for idx in res.json():
+        if count < 10:
+            print(f"{idx.get('sha')}: {idx.get('commit').get('author').get('name')}")
+        count += 1
