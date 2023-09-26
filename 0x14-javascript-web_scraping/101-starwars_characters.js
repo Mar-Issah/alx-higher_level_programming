@@ -10,14 +10,17 @@ request(apiUrl, (error, response, body) => {
     const movieData = JSON.parse(body);
     const characters = movieData.characters;
 
+    
     function fetchCharacterName(url) {
-      request(url, (error, response, body) => {
-        if (error) {
-          console.error(error);
-        } else {
-          const characterData = JSON.parse(body);
-          resolve(characterData.name);
-        }
+      return new Promise((resolve, reject) => {
+        request(url, (error, response, body) => {
+          if (error) {
+            reject(error);
+          } else {
+            const characterData = JSON.parse(body);
+            resolve(characterData.name);
+          }
+        });
       });
     }
 
