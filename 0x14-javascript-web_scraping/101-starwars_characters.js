@@ -10,8 +10,7 @@ request(apiUrl, (error, response, body) => {
     const movieData = JSON.parse(body);
     const characters = movieData.characters;
 
-    
-    function fetchCharacterName(url) {
+    function fetchCharacterName (url) {
       return new Promise((resolve, reject) => {
         request(url, (error, response, body) => {
           if (error) {
@@ -24,7 +23,7 @@ request(apiUrl, (error, response, body) => {
       });
     }
 
-    async function printCharacterNames() {
+    async function printCharacterNames () {
       for (const characterUrl of characters) {
         try {
           const characterName = await fetchCharacterName(characterUrl);
