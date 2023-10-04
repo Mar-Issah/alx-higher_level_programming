@@ -20,3 +20,4 @@
 - 0x0F-python-object_relational_mapping
 - 0x11-python-network_1
 - 0x14-javascript-web_scraping
+- 0x15-javascript-web_jquery
