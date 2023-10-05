@@ -1,7 +1,8 @@
 $(document).ready(() => {
   $('input#btn_translate').click(() => {
-    const lang = $('input#language_code').val();
-    $.getJSON(`https://fourtonfish.com/hellosalut/?lang=${lang}`, (data) => {
+    const language = $('input#language_code').val();
+
+    $.getJSON(`https://hellosalut.stefanbohacek.dev/?lang=${language}`, (data) => {
       $('div#hello').html(data.hello);
     });
   });
