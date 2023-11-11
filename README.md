@@ -5,7 +5,7 @@
 - 0x02-python-import_modules.
 - 0x03-python-data_structures.
 - 0x04-python-more_data_structures.
-- 0x05-python-exceptions
+- 0x05-python-exceptions.
 - 0x06-python_classes
 - 0x07-python-test_driven_development
 - 0x08-python-more_classes
