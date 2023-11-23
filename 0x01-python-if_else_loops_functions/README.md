@@ -10,7 +10,7 @@
 - How to use `else` clauses on loops.
 - What does the `pass` statement do, and when to use it.
 - How to use `range`.
-- What is a function and how do you use functions
+- What is a function and how do you use functions.
 - What does `return` a function that does not use any return statement
 - Scope of variables
 - What’s a traceback
