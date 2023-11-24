@@ -1,5 +1,5 @@
 ## General
-- Why Python programming is awesome.
+- Why `Python` programming is awesome.
 - Who created Python.
 - Who is Guido van Rossum.
 - Where does the name `Python` come from.
